@@ -39,6 +39,8 @@ elif which curl > /dev/null; then
 fi
 
 if [ -f /tmp/mirrorlist ]; then
+    echo "Ranking mirrors" 1>&2
+
     sed -i 's/^#Server/Server/' /tmp/mirrorlist
     rankmirrors -n 6 /tmp/mirrorlist > /etc/pacman.d/mirrorlist
 
