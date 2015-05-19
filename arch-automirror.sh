@@ -1,10 +1,14 @@
 #!/bin/sh
 set -e
 
+if [ "$(id -u)" != "0" ]; then
+    echo "This script must be run as root" 1>&2
+    exit 1
+fi
+
 if [ "$1" = "-h" ]; then
     echo "Usage: $0 [country code] [ipv6]" 
-
-    exit 0;
+    exit 0
 fi
 
 if [ -z "$1" ]; then
@@ -39,6 +43,6 @@ if [ -f /tmp/mirrorlist ]; then
     rankmirrors -n 6 /tmp/mirrorlist > /etc/pacman.d/mirrorlist
 
 else
-    echo "Can't download mirrorlist";
+    echo "Can't download mirrorlist" 1>&2
     exit 1;
 fi
