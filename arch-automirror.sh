@@ -1,18 +1,37 @@
 #!/bin/sh
 set -e
 
+if [ "$1" = "-h" ]; then
+    echo "Usage: $0 [country code] [ipv6]" 
+
+    exit 0;
+fi
+
+if [ -z "$1" ]; then
+    COUNTRY="US"
+else
+    COUNTRY=$1
+fi
+
+if [ -z "$2" ]; then
+    IPV6="ip_version=6&"
+else
+    if [ "$2" = "true" ]; then
+        IPV6="ip_version=6&"
+    fi
+fi
+
+
+URL="https://www.archlinux.org/mirrorlist/?country=${COUNTRY}&protocol=http&ip_version=4&${IPV6}use_mirror_status=on"
+
 rm -f /tmp/mirrorlist
 
 if which wget > /dev/null; then
-
-    wget -O /tmp/mirrorlist 'https://www.archlinux.org/mirrorlist/?country=US&protocol=http&ip_version=4&ip_version=6&use_mirror_status=on'
+    wget -O /tmp/mirrorlist ${URL}
     wait $1
 
-
 elif which curl > /dev/null; then
-
-    curl 'https://www.archlinux.org/mirrorlist/?country=US&protocol=http&ip_version=4&ip_version=6&use_mirror_status=on' > /tmp/mirrorlist
-
+    curl ${URL} > /tmp/mirrorlist
 fi
 
 if [ -f /tmp/mirrorlist ]; then
