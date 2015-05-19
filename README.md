@@ -1,17 +1,18 @@
 # arch-automirror
 
-Automatically hit's arch's mirrorlist, downloads the list, ranks them by speed, and replaces the default mirror list
+Automatically accesses Arch's mirrorlist, downloads it, ranks them by speed (using rankmirrors), and replaces the default mirror list with the new one
 
-Assumes US by default, IPV6 also enabled by default
+Assumes US by default
+IPV6 also enabled by default
 
 ## Usage
 
-arch-automirror.sh \[country code\] \[ipv6 on\]
+``arch-automirror.sh \[country code\] \[ipv6 on\]``
 
 ## Options
 
 ### Country Code
-Enter country code as used on Arch's [mirrorlist](https://www.archlinux.org/mirrorlist).
+Supply country code as used on Arch's [mirrorlist](https://www.archlinux.org/mirrorlist).
 
 ### IPV6
-enter true to enable IPV6, anything else to disable
+enabled by default, set this to anything other than true to disable it
