@@ -3,11 +3,12 @@
 Automatically accesses Arch's mirrorlist, downloads it, ranks them by speed (using rankmirrors), and replaces the default mirror list with the new one
 
 Assumes US by default
+
 IPV6 also enabled by default
 
 ## Usage
 
-``arch-automirror.sh \[country code\] \[ipv6 on\]``
+``arch-automirror.sh [country code] [ipv6]``
 
 ## Options
 
