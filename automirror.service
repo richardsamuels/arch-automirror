@@ -1,0 +1,9 @@
+[Unit]
+Description=Update arch mirrors
+RequiresMountsFor=/etc/pacman.d
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/automirror.sh
+Nice=19
+User=root
