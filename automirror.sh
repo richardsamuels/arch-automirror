@@ -32,7 +32,7 @@ rm -f /tmp/mirrorlist
 
 if which wget > /dev/null; then
     wget -O /tmp/mirrorlist ${URL}
-    wait $1
+    wait
 
 elif which curl > /dev/null; then
     curl ${URL} > /tmp/mirrorlist
