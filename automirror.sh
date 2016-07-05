@@ -43,6 +43,7 @@ if [ -f /tmp/mirrorlist ]; then
 
     sed -i 's/^#Server/Server/' /tmp/mirrorlist
     rankmirrors -n 6 /tmp/mirrorlist > /etc/pacman.d/mirrorlist
+    rm -f /tmp/mirrorlist
 
 else
     echo "Can't download mirrorlist" 1>&2

@@ -4,6 +4,6 @@ RequiresMountsFor=/etc/pacman.d
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/automirror.sh
+ExecStart=/usr/local/bin/automirror.sh
 Nice=19
 User=root
