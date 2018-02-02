@@ -1,9 +1,16 @@
 language: bash
+sudo: required
+
 install: true
-before_script:
+sudo: required
+
+arch:
+  script:
     - sudo chmod +x ./automirror.sh
     - sudo mkdir -p /etc/pacman.d
-
-script:
     - sudo bash ./automirror.sh
     - test `grep -w -c "Server =" /etc/pacman.d/mirrorlist` == "6"
+
+script:
+  - travis_wait 30 sleep 1800 &
+  - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
