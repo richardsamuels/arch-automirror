@@ -1,0 +1,9 @@
+language: bash
+install: true
+before_script:
+    - sudo chmod +x ./automirror.sh
+    - sudo mkdir -p /etc/pacman.d
+
+script:
+    - sudo bash ./automirror.sh
+    - test `grep -w -c "Server =" /etc/pacman.d/mirrorlist` == "6"
