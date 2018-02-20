@@ -30,13 +30,7 @@ URL="https://www.archlinux.org/mirrorlist/?country=${COUNTRY}&protocol=http&ip_v
 
 rm -f /tmp/mirrorlist
 
-if which wget > /dev/null; then
-    wget -O /tmp/mirrorlist ${URL}
-    wait
-
-elif which curl > /dev/null; then
-    curl ${URL} > /tmp/mirrorlist
-fi
+curl ${URL} > /tmp/mirrorlist
 
 if [ -f /tmp/mirrorlist ]; then
     echo "Ranking mirrors" 1>&2
