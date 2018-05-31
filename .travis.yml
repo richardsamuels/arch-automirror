@@ -5,6 +5,8 @@ install: true
 sudo: required
 
 arch:
+  packages:
+    - pacman-contrib
   script:
     - sudo chmod +x ./automirror.sh
     - sudo mkdir -p /etc/pacman.d
